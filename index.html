@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>满媛 · AI 产品作品集</title>
+<style>img{max-width:100%}[hidden]{display:none!important}button{font:inherit}</style>
+<style>
+/* 布局：单栏阅读流，顶部四格总览（可截成长图），下面四块详情；沿用简历的暖纸色 + 藏蓝 + 橙 */
+:root{
+  --bg:#fbf4ea; --paper:#fffaf3; --ink:#2f2721; --body:#4a3f36; --muted:#8f8174;
+  --navy:#244b78; --accent:#c4722a; --line:#e6d4bc; --chip:#f7e6d2;
+  --display:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1d1915; --paper:#26211c; --ink:#f3ebe1; --body:#d6cabd; --muted:#9d8f81;
+  --navy:#8fb3dd; --accent:#e39a55; --line:#3d342c; --chip:#3a2d21; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1d1915; --paper:#26211c; --ink:#f3ebe1; --body:#d6cabd; --muted:#9d8f81;
+  --navy:#8fb3dd; --accent:#e39a55; --line:#3d342c; --chip:#3a2d21; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:15.5px;line-height:1.75;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{color:var(--ink);text-wrap:balance;margin:0}
+a{color:var(--navy);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--navy) 35%,transparent)}
+a:hover{border-bottom-color:var(--navy)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+b{color:var(--ink);font-weight:700}
+
+/* 页眉 */
+.hero{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:13px;letter-spacing:.12em;color:var(--accent);font-weight:500}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(34px,7vw,48px);letter-spacing:.08em;line-height:1.2}
+.lede{font-size:17px;color:var(--body);max-width:36em}
+.lede b{color:var(--navy)}
+.contact{font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.copy{font:inherit;font-size:13px;color:var(--navy);background:none;border:1px solid var(--line);border-radius:99px;padding:1px 10px;cursor:pointer}
+
+/* 四格总览 */
+.overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px;border-bottom:none;color:inherit}
+.tile:hover{border-color:var(--accent)}
+.tile .k{font-size:12.5px;letter-spacing:.1em;color:var(--accent);font-weight:500}
+.tile h3{font-family:var(--display);font-weight:600;font-size:19px}
+.tile p{margin:0;font-size:14px;line-height:1.65;color:var(--body)}
+.tile .fig{margin-top:auto;padding-top:8px;font-size:13px;color:var(--navy);font-weight:500}
+
+/* 区块 */
+section{display:flex;flex-direction:column;gap:18px;scroll-margin-top:16px}
+.sec-head{display:flex;flex-direction:column;gap:4px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.sec-head .k{font-size:12.5px;letter-spacing:.12em;color:var(--accent);font-weight:500}
+.sec-head h2{font-family:var(--display);font-weight:900;font-size:clamp(24px,4.6vw,30px)}
+.sec-head p{margin:0;color:var(--muted);font-size:14.5px}
+ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+li{position:relative;padding-left:18px}
+li::before{content:"";position:absolute;left:3px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+h3.sub{font-size:16.5px;margin-top:6px}
+
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:center}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+.links span{color:var(--muted)}
+
+/* 流程线 */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px}
+.flow i{font-style:normal;background:var(--chip);color:var(--ink);border-radius:8px;padding:3px 10px;font-weight:500}
+.flow s{text-decoration:none;color:var(--accent)}
+.flow-label{font-size:13px;color:var(--muted);margin-bottom:4px}
+
+/* 图片 */
+figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+figcaption{font-size:13px;color:var(--muted);line-height:1.55}
+figcaption b{color:var(--ink)}
+.shot{display:block;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper);cursor:zoom-in;width:100%}
+.shot img{display:block;width:100%;height:auto}
+.shot.bare{border:none;background:none;border-radius:0}
+.phone{height:420px;overflow-y:auto;cursor:auto}
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.gallery .wide{grid-column:1/-1}
+
+.note{font-size:13.5px;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:10px 14px}
+
+/* 工作经历 */
+.job{display:flex;flex-direction:column;gap:8px}
+.co{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;align-items:baseline}
+.co h3{font-size:17px}
+.co h3 em{font-style:normal;font-weight:500;color:var(--navy);font-size:15px}
+.co .d{font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.earlier{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;font-size:14px}
+.earlier .d{color:var(--muted);font-variant-numeric:tabular-nums}
+
+footer{border-top:1px solid var(--line);padding-top:18px;font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+
+/* 大图查看 */
+.lb{position:fixed;inset:0;background:rgba(20,16,12,.86);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:50;overflow:auto;cursor:zoom-out}
+.lb img{max-width:min(1000px,100%);max-height:none;border-radius:8px}
+.lb[hidden]{display:none}
+
+@media (max-width:640px){
+  .overview,.split,.gallery{grid-template-columns:minmax(0,1fr)}
+  .phones{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+  .phones figure{scroll-snap-align:start}
+  .wrap{gap:44px;padding-block:28px 48px}
+}
+@media (prefers-reduced-motion:no-preference){.tile{transition:border-color .2s}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">作品集 · AI 产品经理</div>
+  <h1>满媛</h1>
+  <p class="lede">近 5 年产品经理（搜狐等），2026 年转向 AI。独立 0→1 做出并开源了一款 <b>AI 产品</b>，平时工作也用一套<b>自己搭的 AI 工作体系</b>推进。</p>
+  <div class="contact">
+    <span>邮箱：<span id="mail">xiaoxianzi04@163.com</span></span>
+    <button class="copy" id="copyBtn" type="button">复制</button>
+  </div>
+</header>
+
+<nav class="overview" aria-label="四块内容总览">
+  <a class="tile" href="#liuri">
+    <span class="k">AI 产品</span>
+    <h3>流日人类图 + 流日小窗</h3>
+    <p>每天哪些通道被接通，一眼看到；再用 AI 写成「今天的你」。免费工具 + AI 今日解读。</p>
+    <span class="fig">独立 0→1 · 已开源 · 手机可直接试用</span>
+  </a>
+  <a class="tile" href="#workflow">
+    <span class="k">AI 工作方式</span>
+    <h3>我的 AI Native 工作体系</h3>
+    <p>按职责分层的对话框，像一家公司在运转：规划 → 项目 → 每日执行 → 记录；认知按日、周、月筛选沉淀。</p>
+    <span class="fig">两个循环 · 已在真实项目中跑通</span>
+  </a>
+  <a class="tile" href="#content">
+    <span class="k">内容与知识产品</span>
+    <h3>B 站课程</h3>
+    <p>高数免费课、人类图付费课、AI 入门课。会把复杂的东西讲清楚，也会自己做产品卖。</p>
+    <span class="fig">80+ 期高数课 · 粉丝约 8 万</span>
+  </a>
+  <a class="tile" href="#work">
+    <span class="k">产品经验</span>
+    <h3>搜狐汽车 · 产品经理</h3>
+    <p>新能源车型库、汽车站改版、跨业务小程序。擅长看清自己手里有什么资源，再做取舍。</p>
+    <span class="fig">2020.12 – 2024.02</span>
+  </a>
+</nav>
+
+<!-- ① 流日人类图 -->
+<section id="liuri">
+  <div class="sec-head">
+    <span class="k">01 · AI 产品</span>
+    <h2>流日人类图 + 流日小窗</h2>
+    <p>需求来自自己：先做工具，再加 AI 解读</p>
+  </div>
+
+  <div class="split">
+    <figure>
+      <button class="shot bare" type="button" data-full="img/widget.png"><img src="img/widget.png" alt="流日小窗：显示此刻接通的 42-53 通道、剩余时间和接下来接通的通道" loading="lazy"></button>
+      <figcaption>流日小窗：此刻接通的通道、剩余时间、由哪颗星体接通，以及接下来的预告</figcaption>
+    </figure>
+    <ul>
+      <li><b>起因：</b>作为人类图用户，我每天都想知道「流日接通了我图里的哪些通道」，没有现成产品做这件事，只能手算。</li>
+      <li><b>免费工具：</b>此刻接通的通道和起止时间、未来 24 小时预告、整月通道月历。Mac 小窗和手机网页都能用。</li>
+      <li><b>隐私和成本：</b>星历在本地计算，出生信息不离开设备，零服务器成本。</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">AI 今日解读</h3>
+  <ul>
+    <li>根据当天接通的通道，生成<b>今天的主题、适合做什么、留意什么、具体场景</b>四个模块；场景按<b>通用、上班族、学生党、自由职业</b>四种身份分别写。</li>
+    <li><b>分工：</b>星历和通道由程序确定性计算，大模型只负责解读；只发送通道信息，不发送出生资料。</li>
+    <li><b>质量：</b>初版输出像鸡汤。我用对照实验（同一模型、同样输入，只改规则）确认是规则问题，逐段点评样例，迭代出规则 V1.1：只写心理和行为模式、不编造事件，每个判断都要能追溯到对应通道。</li>
+    <li><b>可核查：</b>每句话标注依据通道，后端检查覆盖和格式，不合格带原因自动重试；模型选千问控制成本。</li>
+    <li><b>商业化思路：</b>工具开源免费获客，解读作为增值服务。</li>
+  </ul>
+
+  <div class="phones">
+    <figure>
+      <div class="shot phone" tabindex="0" aria-label="可滚动截图"><img src="img/jd-modules.jpg" alt="今日解读四个模块" loading="lazy"></div>
+      <figcaption><b>每日四模块解读</b>：主题、适合做什么、留意什么、场景</figcaption>
+    </figure>
+    <figure>
+      <div class="shot phone" tabindex="0" aria-label="可滚动截图"><img src="img/jd-basis.jpg" alt="逐句标注依据通道" loading="lazy"></div>
+      <figcaption><b>每句话都有依据</b>：展开就能看到对应的通道</figcaption>
+    </figure>
+    <figure>
+      <div class="shot phone" tabindex="0" aria-label="可滚动截图"><img src="img/jd-roles.jpg" alt="同一天不同身份的场景" loading="lazy"></div>
+      <figcaption><b>同一天，不同身份</b>：通用、学生、上班族、自由职业</figcaption>
+    </figure>
+  </div>
+
+  <div class="links">
+    <span>手机网页试用：</span><a href="https://many94705-afk.github.io/liuri-widget" target="_blank" rel="noopener">many94705-afk.github.io/liuri-widget</a>
+    <span>源码：</span><a href="https://github.com/many94705-afk/liuri-widget" target="_blank" rel="noopener">github.com/many94705-afk/liuri-widget</a>
+  </div>
+  <p class="note">截图为演示版，示例人物为虚构；线上版实时调用模型，面试时可以现场演示。</p>
+</section>
+
+<!-- ② AI 工作体系 -->
+<section id="workflow">
+  <div class="sec-head">
+    <span class="k">02 · AI 工作方式</span>
+    <h2>我的 AI Native 工作体系</h2>
+    <p>不是把所有事交给 AI，而是围绕真实需求，重新设计人和 AI 的分工</p>
+  </div>
+
+  <div>
+    <div class="flow-label">工作推进循环：让想法持续变成行动</div>
+    <div class="flow"><i>长期目标</i><s>→</s><i>当前项目</i><s>→</s><i>具体任务</i><s>→</s><i>每日执行</i><s>→</s><i>工作记录</i></div>
+  </div>
+  <div>
+    <div class="flow-label">认知积累循环：让每次对话里的新认识沉淀下来</div>
+    <div class="flow"><i>所有 AI 对话</i><s>→</s><i>日总结池</i><s>→</s><i>周总结</i><s>→</s><i>月总结</i><s>→</s><i>长期知识库</i></div>
+  </div>
+
+  <ul>
+    <li><b>按职责分层：</b>18 个月长期规划相当于总经理，项目规划相当于项目总监，每日工作对话框相当于管理经理，下面是课程、求职、知识整理等执行对话框。上一级的结论复制到下一级，方向就能落成每天的任务。</li>
+    <li><b>延迟筛选：</b>新认知先进日总结池，周末再判断哪些还成立，一个月后再筛一次，最后才进知识库。让时间和实践来决定什么值得长期保存。</li>
+    <li><b>跑通验证：</b>AI 课从策划到上线全程用这套体系推进，结束后由 AI 整理出完整的每日推进日志。</li>
+    <li><b>能力选型：</b>先理解问题，再决定用直接对话、Skill 还是 Agent。实测发现模型升级后，我自己写的聊天整理 Skill 已经不再必需，所以会定期重新评估。</li>
+  </ul>
+
+  <div class="gallery">
+    <figure>
+      <button class="shot" type="button" data-full="img/sidebar.jpg"><img src="img/sidebar.jpg" alt="对话框列表，标注了五个层级" loading="lazy"></button>
+      <figcaption><b>真实在用的对话框结构</b>：长期规划、当前目标、每日待办、工作记录、认知沉淀</figcaption>
+    </figure>
+    <figure>
+      <button class="shot" type="button" data-full="img/org.jpg"><img src="img/org.jpg" alt="AI 工作体系的组织结构图" loading="lazy"></button>
+      <figcaption><b>像一家公司</b>：每个对话框有明确职责，我负责目标和判断</figcaption>
+    </figure>
+    <figure>
+      <button class="shot" type="button" data-full="img/daily-plan.jpg"><img src="img/daily-plan.jpg" alt="每日工作对话框生成的计划" loading="lazy"></button>
+      <figcaption><b>每日工作</b>：告诉 AI 今天做了什么，它按项目进度排出后面几天的任务</figcaption>
+    </figure>
+    <figure>
+      <button class="shot" type="button" data-full="img/daily-log.jpg"><img src="img/daily-log.jpg" alt="AI 课程每日推进回顾" loading="lazy"></button>
+      <figcaption><b>工作记录</b>：课程做完后，AI 根据记录整理出的每日推进回顾</figcaption>
+    </figure>
+    <figure class="wide">
+      <button class="shot" type="button" data-full="img/loop.jpg"><img src="img/loop.jpg" alt="工作推进循环五步图" loading="lazy"></button>
+      <figcaption><b>工作推进循环</b></figcaption>
+    </figure>
+    <figure class="wide">
+      <button class="shot" type="button" data-full="img/knowledge.jpg"><img src="img/knowledge.jpg" alt="AI 知识沉淀流程图" loading="lazy"></button>
+      <figcaption><b>认知积累循环</b>：日、周、月逐级筛选</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ③ B 站 -->
+<section id="content">
+  <div class="sec-head">
+    <span class="k">03 · 内容与知识产品</span>
+    <h2>B 站课程</h2>
+    <p>业余做内容，从免费课到自己研发、上线付费课</p>
+  </div>
+  <ul>
+    <li><b>高数免费课（2020 – 2021）：</b>80 余期，讲透核心思路、通俗易懂。停更时约 3 万粉丝，停更后自然增长到约 8 万；有学生反馈任课老师在课堂上直接放我的视频。</li>
+    <li><b>人类图课程：</b>研究并翻译 20 余本英文原始资料，独立研发并上线付费课程。</li>
+    <li><b>AI 入门实操课（2026.10 上线）：</b>面向零基础，共四节：AI 概念地图 → 搭知识库 → 写 Skill → AI Native。第四节就是上面这套工作体系，课程边做边用，理念也是在用的过程中成形的。</li>
+  </ul>
+  <p class="note">账号主页可以在沟通时现场展示。</p>
+</section>
+
+<!-- ④ 工作经历 -->
+<section id="work">
+  <div class="sec-head">
+    <span class="k">04 · 产品经验</span>
+    <h2>工作经历</h2>
+    <p>先看清自己手里有什么资源，再做取舍</p>
+  </div>
+
+  <div class="job">
+    <div class="co"><h3>搜狐 <em>· 汽车事业部 · 产品经理</em></h3><span class="d">2020.12 – 2024.02</span></div>
+    <ul>
+      <li><b>新能源车型库：</b>梳理新能源车和油车的差异，设计信息架构和页面方案。判断汽车之家（经销商网络）、懂车帝（资金和 3D 车模）的做法依赖搜狐没有的资源，转而把编辑已有的视频、节目和文章沉淀为车型内容，做出差异化。</li>
+      <li><b>汽车 WAP / 官网改版：</b>拆解竞品功能背后的资源条件，结合自身内容资源做取舍，重新梳理内容组织和浏览路径。</li>
+      <li><b>时尚美妆试用小程序：</b>搭建「上架 → 申请 → 选人 → 反馈」流程；合作方投入不足时补位拉新和社群运营，用户群从几十人增长到 200 余人。</li>
+      <li><b>家居营销小程序：</b>帮合作方澄清模糊需求、砍掉低价值需求；上线时遇到重名，清楚对比两种方案的后果交给业务方决策，顺利上线。</li>
+    </ul>
+  </div>
+
+  <div class="earlier">
+    <span class="d">2020.05 – 2020.11</span><span><b>天友科技</b> · 记忆卡片工具 0→1：转向医学考研细分场景，冷启动后从个位数用户涨到每天几十人使用</span>
+    <span class="d">2019.07 – 2020.03</span><span><b>中诚信征信</b> · 小微企业征信数据在线售卖系统</span>
+  </div>
+</section>
+
+<footer>
+  <span>满媛 · 大连理工大学硕士</span>
+  <span>邮箱 xiaoxianzi04@163.com · 完整简历可在沟通后发送</span>
+</footer>
+
+</div>
+
+<div class="lb" id="lb" hidden><img id="lbImg" alt=""></div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=document.getElementById('lbImg');
+  document.querySelectorAll('button.shot[data-full]').forEach(function(b){
+    b.addEventListener('click',function(){
+      im.src=b.dataset.full; im.alt=b.querySelector('img').alt;
+      lb.hidden=false; lb.scrollTop=0;
+    });
+  });
+  lb.addEventListener('click',function(){lb.hidden=true;});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true;});
+  var btn=document.getElementById('copyBtn');
+  btn.addEventListener('click',function(){
+    var t=document.getElementById('mail').textContent;
+    var done=function(){btn.textContent='已复制';setTimeout(function(){btn.textContent='复制';},1600);};
+    try{
+      navigator.clipboard.writeText(t).then(done,function(){sel();});
+    }catch(e){sel();}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  });
+})();
+</script>
+
+</body>
+</html>
