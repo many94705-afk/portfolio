@@ -77,6 +77,10 @@ figcaption b{color:var(--ink)}
 .shot.bare{border:none;background:none;border-radius:0}
 .phone{height:420px;overflow-y:auto;cursor:auto}
 .phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.phones.duo{grid-template-columns:repeat(2,minmax(0,1fr))}
+.trybox{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.trybox img{width:110px;height:110px;border-radius:6px;background:#fff;padding:4px;border:1px solid var(--line)}
+.trybox .qcap{font-size:13px;color:var(--muted);text-align:center;margin-top:4px}
 .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .gallery .wide{grid-column:1/-1}
 
@@ -115,7 +119,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:13.5px;color:
 <header class="hero">
   <div class="eyebrow">作品集 · AI 产品经理</div>
   <h1>满媛</h1>
-  <p class="lede">近 5 年产品经理（搜狐等），2026 年转向 AI。独立 0→1 做出并开源了一款 <b>AI 产品</b>，平时工作也用一套<b>自己搭的 AI 工作体系</b>推进。</p>
+  <p class="lede">近 5 年产品经理（搜狐等），2026 年转向 AI。独立 0→1 做出并开源了一款 <b>AI 产品</b>，平时工作也用一套<b>自己搭的 AI 工作体系</b>推进。2024 年起独立实践：从做内容出发，先后验证了 1 对 1 咨询、课程两种付费方式，再做出 AI 产品。</p>
   <div class="contact">
     <span>邮箱：<span id="mail">xiaoxianzi04@163.com</span></span>
     <button class="copy" id="copyBtn" type="button">复制</button>
@@ -126,7 +130,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:13.5px;color:
   <a class="tile" href="#liuri">
     <span class="k">AI 产品</span>
     <h3>流日人类图 + 流日小窗</h3>
-    <p>每天哪些通道被接通，一眼看到；再用 AI 写成「今天的你」。免费工具 + AI 今日解读。</p>
+    <p>每天哪些通道被接通，一眼看到；再用 AI 写成「今天的你」。免费功能拆出开源，AI 今日解读为付费功能。</p>
     <span class="fig">独立 0→1 · 已开源 · 手机可直接试用</span>
   </a>
   <a class="tile" href="#workflow">
@@ -136,10 +140,10 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:13.5px;color:
     <span class="fig">两个循环 · 已在真实项目中跑通</span>
   </a>
   <a class="tile" href="#content">
-    <span class="k">内容与知识产品</span>
-    <h3>B 站课程</h3>
-    <p>高数免费课、人类图付费课、AI 入门课。会把复杂的东西讲清楚，也会自己做产品卖。</p>
-    <span class="fig">80+ 期高数课 · 粉丝约 8 万</span>
+    <span class="k">内容与知识付费</span>
+    <h3>从内容到付费</h3>
+    <p>B 站高数约 8 万粉丝 → 1 对 1 付费咨询 → 人类图付费课 → AI 入门课，变现方式一步步升级。</p>
+    <span class="fig">咨询和课程都获得了付费用户</span>
   </a>
   <a class="tile" href="#work">
     <span class="k">产品经验</span>
@@ -166,10 +170,22 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:13.5px;color:
       <li><b>起因：</b>作为人类图用户，我每天都想知道「流日接通了我图里的哪些通道」，没有现成产品做这件事，只能手算。</li>
       <li><b>免费工具：</b>此刻接通的通道和起止时间、未来 24 小时预告、整月通道月历。Mac 小窗和手机网页都能用。</li>
       <li><b>隐私和成本：</b>星历在本地计算，出生信息不离开设备，零服务器成本。</li>
+      <li><b>产品分层：</b>主产品功能最全（本命图、流日接通、通道月历、多档案 + AI 今日解读），AI 今日解读为付费功能；免费的流日接通和通道月历拆成 Mac 小窗和手机网页，开源免费。</li>
     </ul>
   </div>
 
-  <h3 class="sub">AI 今日解读</h3>
+  <div class="phones duo">
+    <figure>
+      <div class="shot phone" tabindex="0" aria-label="可滚动截图"><img src="img/transit.png" alt="主产品解读页：此刻接通的通道、起止和剩余时间，下方是生成今日解读的入口" loading="lazy"></div>
+      <figcaption><b>流日接通</b>：任意时刻接通的通道、起止与剩余时间；下方就是「生成今日解读」入口</figcaption>
+    </figure>
+    <figure>
+      <div class="shot phone" tabindex="0" aria-label="可滚动截图"><img src="img/calendar.png" alt="通道月历：长期通道排在前面，连续三天以上连成色带" loading="lazy"></div>
+      <figcaption><b>通道月历</b>：长期通道排在前面，连续 3 天以上连成色带；点日期看当天详情</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="sub">AI 今日解读（付费功能）</h3>
   <ul>
     <li>根据当天接通的通道，生成<b>今天的主题、适合做什么、留意什么、具体场景</b>四个模块；场景按<b>通用、上班族、学生党、自由职业</b>四种身份分别写。</li>
     <li><b>分工：</b>星历和通道由程序确定性计算，大模型只负责解读；只发送通道信息，不发送出生资料。</li>
@@ -193,11 +209,14 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:13.5px;color:
     </figure>
   </div>
 
+  <div class="trybox">
+  <div><img src="img/qr-mobile.png" alt="手机版二维码"><div class="qcap">手机扫码直接用</div></div>
   <div class="links">
     <span>手机网页试用：</span><a href="https://many94705-afk.github.io/liuri-widget" target="_blank" rel="noopener">many94705-afk.github.io/liuri-widget</a>
     <span>源码：</span><a href="https://github.com/many94705-afk/liuri-widget" target="_blank" rel="noopener">github.com/many94705-afk/liuri-widget</a>
   </div>
-  <p class="note">截图为演示版，示例人物为虚构；线上版实时调用模型，面试时可以现场演示。</p>
+  </div>
+  <p class="note">AI 今日解读截图为演示版（示例人物为虚构），所有截图均不展示出生信息；线上版实时调用模型，面试时可以现场演示。</p>
 </section>
 
 <!-- ② AI 工作体系 -->
@@ -233,36 +252,22 @@ footer{border-top:1px solid var(--line);padding-top:18px;font-size:13.5px;color:
       <button class="shot" type="button" data-full="img/org.jpg"><img src="img/org.jpg" alt="AI 工作体系的组织结构图" loading="lazy"></button>
       <figcaption><b>像一家公司</b>：每个对话框有明确职责，我负责目标和判断</figcaption>
     </figure>
-    <figure>
-      <button class="shot" type="button" data-full="img/daily-plan.jpg"><img src="img/daily-plan.jpg" alt="每日工作对话框生成的计划" loading="lazy"></button>
-      <figcaption><b>每日工作</b>：告诉 AI 今天做了什么，它按项目进度排出后面几天的任务</figcaption>
-    </figure>
-    <figure>
-      <button class="shot" type="button" data-full="img/daily-log.jpg"><img src="img/daily-log.jpg" alt="AI 课程每日推进回顾" loading="lazy"></button>
-      <figcaption><b>工作记录</b>：课程做完后，AI 根据记录整理出的每日推进回顾</figcaption>
-    </figure>
-    <figure class="wide">
-      <button class="shot" type="button" data-full="img/loop.jpg"><img src="img/loop.jpg" alt="工作推进循环五步图" loading="lazy"></button>
-      <figcaption><b>工作推进循环</b></figcaption>
-    </figure>
-    <figure class="wide">
-      <button class="shot" type="button" data-full="img/knowledge.jpg"><img src="img/knowledge.jpg" alt="AI 知识沉淀流程图" loading="lazy"></button>
-      <figcaption><b>认知积累循环</b>：日、周、月逐级筛选</figcaption>
-    </figure>
   </div>
 </section>
 
-<!-- ③ B 站 -->
+<!-- ③ 内容与知识付费 -->
 <section id="content">
   <div class="sec-head">
-    <span class="k">03 · 内容与知识产品</span>
-    <h2>B 站课程</h2>
-    <p>业余做内容，从免费课到自己研发、上线付费课</p>
+    <span class="k">03 · 内容与知识付费</span>
+    <h2>从内容到付费：变现方式一步步升级</h2>
+    <p>每一步都复用上一步的能力：内容 → 咨询付费 → 课程付费 → 模式复制 → AI 产品</p>
   </div>
   <ul>
-    <li><b>高数免费课（2020 – 2021）：</b>80 余期，讲透核心思路、通俗易懂。停更时约 3 万粉丝，停更后自然增长到约 8 万；有学生反馈任课老师在课堂上直接放我的视频。</li>
-    <li><b>人类图课程：</b>研究并翻译 20 余本英文原始资料，独立研发并上线付费课程。</li>
-    <li><b>AI 入门实操课（2026.10 上线）：</b>面向零基础，共四节：AI 概念地图 → 搭知识库 → 写 Skill → AI Native。第四节就是上面这套工作体系，课程边做边用，理念也是在用的过程中成形的。</li>
+    <li><b>积累内容（2020.03 – 2021.11，业余）：</b>B 站高数免费课 80 余期，讲透核心思路、通俗易懂。停更时约 3 万粉丝，停更后自然增长到约 8 万；有学生反馈任课老师在课堂上直接放我的视频。</li>
+    <li><b>卖时间 · 1 对 1 咨询（2024.03 – 2025.07）：</b>研究东方哲学体系，在抖音新开账号做内容，提供付费咨询并获得付费用户，第一次验证内容可以变现；咨询依赖个人时间、难以放大，于是转向课程。</li>
+    <li><b>卖课 · 一对多（2025.08 – 2026.04）：</b>深耕人类图，研究并翻译 20 余本英文原始资料；2026.01 独立研发并上线付费课程（699 元），完成版权登记，获得首批付费学员。</li>
+    <li><b>模式复制 · 换领域（2026.05 – 2026.10）：</b>系统学习 AI，复用做课方法，两周完成并上线 AI 入门实操课。面向零基础，共四节：AI 概念地图 → 搭知识库 → 写 Skill → AI Native。第四节就是上面这套工作体系，课程边做边用，理念也是在用的过程中成形的。</li>
+    <li><b>产品化（2026.10）：</b>把 AI 能力、人类图专业知识和产品经验合在一起，做出上面的流日人类图。</li>
   </ul>
   <p class="note">账号主页可以在沟通时现场展示。</p>
 </section>
